@@ -36,7 +36,6 @@ MovingObject.prototype.isCollidedWith = function (otherObject) {
     // is less than the sum of their radii
     let distance = Math.sqrt(((this.pos[0] - otherObject.pos[0]) ** 2) + ((this.pos[1] - otherObject.pos[1]) ** 2));
     let sum = this.radius + otherObject.radius;
-    console.log(`Distance: ${distance}, Sum: ${sum}`);
     return (distance < sum ? true : false);
 }
 
