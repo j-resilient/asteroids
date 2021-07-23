@@ -39,8 +39,15 @@ Game.prototype.wrap = function(pos) {
 }
 Game.prototype.checkCollisions = function() {
     // enumerate asteroids and check for collisions
-    // in the event of a collision, allert "COLLISION"
+    // in the event of a collision, alert "COLLISION"
     // (do not check if an asteroid collides with itself)
+    for (let outer = 0; outer < this.num_asteroids; outer++) {
+        for (let inner = outer + 1; inner < this.num_asteroids; inner++) {
+            if (this.asteroids[outer].isCollidedWith(this.asteroids[inner])) {
+                alert("Collision!");
+            }
+        }
+    }
 }
 
 Game.prototype.step = function() {
