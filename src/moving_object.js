@@ -17,6 +17,15 @@ class MovingObject {
         this.radius = optionsObj.radius;
         this.color = optionsObj.color;
     }
+
+    draw(ctx) {
+        // draw a circle with radius at pos
+        // fill circle with color
+    }
+
+    move() {
+        // increment pos by vel
+    }
 }
 
 module.exports = MovingObject;
