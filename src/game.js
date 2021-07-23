@@ -1,15 +1,18 @@
 // Holds all of the moving objects and the logic for moving them
 function Game() {
-    // define DIM_X, DIM_Y and NUM_ASTEROIDS
-    // create empty array asteroids
-    // call addAsteroids
+    this.dim_x = 1000;
+    this.dim_y = 600;
+    this.num_asteroids = 4;
+    this.asteroids = [];
+    this.addAsteroids();
 }
 Game.prototype.addAsteroids = function() {
-    // randomly place asteroids
-    // store in asteroids array
+    for (let i = 0; i < this.num_asteroids; i++) {
+        this.asteroids.push(new Asteroid(this.randomPosition()));
+    }
 }
 Game.prototype.randomPosition = function() {
-    // generate random positions
+    return [Math.round(Math.random() * 1000), Math.round(Math.random() * 600)];
 }
 Game.prototype.draw = function(ctx) {
     // call clearRect on ctx and call draw on every asteroid
@@ -35,3 +38,5 @@ Game.prototype.step = function() {
 Game.prototype.remove = function(asteroid) {
     // remove asteroid
 }
+
+module.exports = Game;
