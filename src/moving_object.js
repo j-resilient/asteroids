@@ -26,7 +26,7 @@ MovingObject.prototype.draw = function (ctx) {
 }
 
 MovingObject.prototype.move = function() {
-    // call Game#wrap() on position
+    this.pos = this.game.wrap(this.pos);
     this.pos[0] += this.vel[0];
     this.pos[1] += this.vel[1];
 }
