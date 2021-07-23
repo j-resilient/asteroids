@@ -32,7 +32,7 @@ MovingObject.prototype.isCollidedWith = function (otherObject) {
     // is less than the sum of their radii
 }
 
-MovingObject.prototype.collideWith(otherObject) {
+MovingObject.prototype.collideWith = function(otherObject) {
     // call Game#remove on this and otherObject
 }
 
