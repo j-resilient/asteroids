@@ -2,6 +2,8 @@ const Util = {
     inherits(childclass, parentClass) {
         // code to make the childclass inherit from the parent class
         // then export a JS object containing it
+        childclass.prototype = Object.create(parentClass.prototype);
+        childclass.prototype.constructor = childclass;
     },
     // next two methods provided by appacademy for the project
     randomVec(length) {
