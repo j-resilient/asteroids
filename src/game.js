@@ -8,7 +8,7 @@ function Game() {
 }
 Game.prototype.addAsteroids = function() {
     for (let i = 0; i < this.num_asteroids; i++) {
-        this.asteroids.push(new Asteroid(this.randomPosition()));
+        this.asteroids.push(new Asteroid(this.randomPosition(), this));
     }
 }
 Game.prototype.randomPosition = function() {
@@ -24,6 +24,18 @@ Game.prototype.moveObjects = function() {
 Game.prototype.wrap = function(pos) {
     // returns a "wrapped position"
     // if the asteroid goes off the screen, make it reappear on the other side
+    if (pos[0] > this.dim_x) {
+        pos[0] = 0;
+    } else if (pos[0] < 0) {
+        pos[0] = this.dim_x;
+    }
+
+    if (pos[1] > this.dim_y) {
+        pos[1] = 0;
+    } else if (pos[1] < 0) {
+        pos[1] = this.dim_y;
+    }
+    return pos;
 }
 Game.prototype.checkCollisions = function() {
     // enumerate asteroids and check for collisions
