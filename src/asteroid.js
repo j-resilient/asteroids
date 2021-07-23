@@ -6,7 +6,7 @@ function Asteroid(pos, currentGame) {
     MovingObject.call(this, { 
         pos: pos, 
         vel: Util.randomVec(2), 
-        radius: 5, 
+        radius: 10, 
         color: "#a9a9a9",
         game: currentGame
     });
