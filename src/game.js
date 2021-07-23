@@ -15,12 +15,11 @@ Game.prototype.randomPosition = function() {
     return [Math.round(Math.random() * 1000), Math.round(Math.random() * 600)];
 }
 Game.prototype.draw = function(ctx) {
-    // call clearRect on ctx and call draw on every asteroid
     ctx.clearRect(0, 0, this.dim_x, this.dim_y);
     this.asteroids.forEach(a => a.draw(ctx));
 }
 Game.prototype.moveObjects = function() {
-    // call move on every asteroid
+    this.asteroids.forEach(a => a.move());
 }
 Game.prototype.wrap = function(pos) {
     // returns a "wrapped position"
