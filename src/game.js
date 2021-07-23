@@ -51,8 +51,8 @@ Game.prototype.checkCollisions = function() {
 }
 
 Game.prototype.step = function() {
-    // call Game#moveObjects
-    // Game#checkCollisions
+    this.moveObjects();
+    this.checkCollisions();
 }
 
 Game.prototype.remove = function(asteroid) {
