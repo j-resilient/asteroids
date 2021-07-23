@@ -26,7 +26,8 @@ MovingObject.prototype.draw = function (ctx) {
 
 MovingObject.prototype.move = function() {
     // call Game#wrap() on position
-    this.pos += this.vel;
+    this.pos[0] += this.vel[0];
+    this.pos[1] += this.vel[1];
 }
 
 MovingObject.prototype.isCollidedWith = function (otherObject) {
