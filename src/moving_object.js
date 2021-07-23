@@ -15,6 +15,7 @@ function MovingObject(optionsObj) {
     this.vel = optionsObj.vel;
     this.radius = optionsObj.radius;
     this.color = optionsObj.color;
+    this.game = optionsObj.game;
 }
 
 MovingObject.prototype.draw = function (ctx) {
