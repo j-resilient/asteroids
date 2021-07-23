@@ -17,3 +17,21 @@ Game.prototype.draw = function(ctx) {
 Game.prototype.moveObjects = function() {
     // call move on every asteroid
 }
+Game.prototype.wrap(pos) {
+    // returns a "wrapped position"
+    // if the asteroid goes off the screen, make it reappear on the other side
+}
+Game.prototype.checkCollisions = function() {
+    // enumerate asteroids and check for collisions
+    // in the event of a collision, allert "COLLISION"
+    // (do not check if an asteroid collides with itself)
+}
+
+Game.prototype.step = function() {
+    // call Game#moveObjects
+    // Game#checkCollisions
+}
+
+Game.prototype.remove(asteroid) {
+    // remove asteroid
+}

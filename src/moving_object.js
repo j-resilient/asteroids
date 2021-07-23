@@ -23,7 +23,17 @@ MovingObject.prototype.draw = function (ctx) {
 }
 
 MovingObject.prototype.move = function() {
+    // call Game#wrap() on position
     // increment pos by vel
+}
+
+MovingObject.prototype.isCollidedWith = function (otherObject) {
+    // two circles collide when the distance between their center points
+    // is less than the sum of their radii
+}
+
+MovingObject.prototype.collideWith(otherObject) {
+    // call Game#remove on this and otherObject
 }
 
 module.exports = MovingObject;
