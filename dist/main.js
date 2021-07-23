@@ -9,13 +9,23 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/asteroid.js":
+/*!*************************!*\
+  !*** ./src/asteroid.js ***!
+  \*************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("const Util = __webpack_require__(/*! ./util */ \"./src/util.js\");\nconst MovingObject = __webpack_require__(/*! ./moving_object */ \"./src/moving_object.js\");\n\n// should inherit from MovingObject\nfunction Asteroid(pos) {\n    MovingObject.call(this, { \n        pos: pos, \n        vel: Util.randomVec(this.radius * 2), \n        radius: 5, \n        color: \"#a9a9a9\" \n    });\n}\n\nUtil.inherits(Asteroid, MovingObject);\nmodule.exports = Asteroid;\n\n//# sourceURL=webpack://asteroids/./src/asteroid.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("console.log(\"webpack is working\");\nconst MovingObject = __webpack_require__(/*! ./moving_object.js */ \"./src/moving_object.js\");\n\n// document.getEventListener(\"DOMContentLoaded\", () => {\n//     const canvas = document.getElementById(\"game-canvas\");\n//     const ctx = canvas.getContext(\"2d\");\n//     // construct a GameView and call start on it\n// });\n\nwindow.MovingObject = MovingObject;\n\n//# sourceURL=webpack://asteroids/./src/index.js?");
+eval("console.log(\"webpack is working\");\nconst MovingObject = __webpack_require__(/*! ./moving_object.js */ \"./src/moving_object.js\");\nconst Asteroid = __webpack_require__(/*! ./asteroid.js */ \"./src/asteroid.js\");\n\ndocument.addEventListener(\"DOMContentLoaded\", (e) => {\n    const canvas = document.getElementById(\"game-canvas\");\n    const ctx = canvas.getContext(\"2d\");\n    let x = new Asteroid([30, 30]);\n    x.draw(ctx);\n    x.move();\n    x.draw(ctx);\n    // construct a GameView and call start on it\n});\n\nwindow.MovingObject = MovingObject;\nwindow.Asteroid = Asteroid;\n\n//# sourceURL=webpack://asteroids/./src/index.js?");
 
 /***/ }),
 
@@ -25,7 +35,17 @@ eval("console.log(\"webpack is working\");\nconst MovingObject = __webpack_requi
   \******************************/
 /***/ ((module) => {
 
-eval("// base class for anything that moves\n// move(), draw(ctx), isCollidedWith(otherMovingObject)\n\n//  example options object:\n// {\n//   pos: [30, 30],\n//   vel: [10, 10],\n//   radius: 5,\n//   color: \"#00FF00\"\n// };\n\nfunction MovingObject(optionsObj) {\n    // 2d velocity and position\n    this.pos = optionsObj.pos;\n    this.vel = optionsObj.vel;\n    this.radius = optionsObj.radius;\n    this.color = optionsObj.color;\n}\n\nMovingObject.prototype.draw = function (ctx) {\n    // draw a circle with radius at pos\n    // fill circle with color\n}\n\nMovingObject.prototype.move = function() {\n    // call Game#wrap() on position\n    // increment pos by vel\n}\n\nMovingObject.prototype.isCollidedWith = function (otherObject) {\n    // two circles collide when the distance between their center points\n    // is less than the sum of their radii\n}\n\nMovingObject.prototype.collideWith = function(otherObject) {\n    // call Game#remove on this and otherObject\n}\n\nmodule.exports = MovingObject;\n\n//# sourceURL=webpack://asteroids/./src/moving_object.js?");
+eval("// base class for anything that moves\n// move(), draw(ctx), isCollidedWith(otherMovingObject)\n\n//  example options object:\n// {\n//   pos: [30, 30],\n//   vel: [10, 10],\n//   radius: 5,\n//   color: \"#00FF00\"\n// };\n\nfunction MovingObject(optionsObj) {\n    // 2d velocity and position\n    this.pos = optionsObj.pos;\n    this.vel = optionsObj.vel;\n    this.radius = optionsObj.radius;\n    this.color = optionsObj.color;\n}\n\nMovingObject.prototype.draw = function (ctx) {\n    ctx.fillStyle = this.color;\n    ctx.beginPath();\n    ctx.arc(this.pos[0], this.pos[1], this.radius, 0, 2 * Math.PI, false);\n    ctx.fill();\n}\n\nMovingObject.prototype.move = function() {\n    // call Game#wrap() on position\n    this.pos += this.vel;\n}\n\nMovingObject.prototype.isCollidedWith = function (otherObject) {\n    // two circles collide when the distance between their center points\n    // is less than the sum of their radii\n}\n\nMovingObject.prototype.collideWith = function(otherObject) {\n    // call Game#remove on this and otherObject\n}\n\nmodule.exports = MovingObject;\n\n//# sourceURL=webpack://asteroids/./src/moving_object.js?");
+
+/***/ }),
+
+/***/ "./src/util.js":
+/*!*********************!*\
+  !*** ./src/util.js ***!
+  \*********************/
+/***/ ((module) => {
+
+eval("const Util = {\n    inherits(childclass, parentClass) {\n        // code to make the childclass inherit from the parent class\n        // then export a JS object containing it\n        childclass.prototype = Object.create(parentClass.prototype);\n        childclass.prototype.constructor = childclass;\n    },\n    // next two methods provided by appacademy for the project\n    randomVec(length) {\n        const deg = 2 * Math.PI * Math.random();\n        return Util.scale([Math.sin(deg), Math.cos(deg)], length);\n    },\n    // Scale the length of a vector by the given amount.\n    scale(vec, m) {\n        return [vec[0] * m, vec[1] * m];\n    }\n};\nmodule.exports = Util;\n\n//# sourceURL=webpack://asteroids/./src/util.js?");
 
 /***/ })
 
