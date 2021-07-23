@@ -9,23 +9,21 @@
 //   color: "#00FF00"
 // };
 
-class MovingObject {
-    constructor(optionsObj) {
-        // 2d velocity and position
-        this.pos = optionsObj.pos;
-        this.vel = optionsObj.vel;
-        this.radius = optionsObj.radius;
-        this.color = optionsObj.color;
-    }
+function MovingObject(optionsObj) {
+    // 2d velocity and position
+    this.pos = optionsObj.pos;
+    this.vel = optionsObj.vel;
+    this.radius = optionsObj.radius;
+    this.color = optionsObj.color;
+}
 
-    draw(ctx) {
-        // draw a circle with radius at pos
-        // fill circle with color
-    }
+MovingObject.prototype.draw = function (ctx) {
+    // draw a circle with radius at pos
+    // fill circle with color
+}
 
-    move() {
-        // increment pos by vel
-    }
+MovingObject.prototype.move = function() {
+    // increment pos by vel
 }
 
 module.exports = MovingObject;
