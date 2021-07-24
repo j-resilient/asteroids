@@ -5,8 +5,12 @@ function Game() {
     this.num_asteroids = 4;
     this.asteroids = [];
     this.addAsteroids();
+    // build a ship with a random position
+    // create array of bullets
 }
+
 Game.prototype.addAsteroids = function() {
+    // rewrite to add bullets or asteroids
     for (let i = 0; i < this.num_asteroids; i++) {
         this.asteroids.push(new Asteroid(this.randomPosition(), this));
     }
@@ -17,9 +21,11 @@ Game.prototype.randomPosition = function() {
 Game.prototype.draw = function(ctx) {
     ctx.clearRect(0, 0, this.dim_x, this.dim_y);
     this.asteroids.forEach(a => a.draw(ctx));
+    // iterate through and draw allObjects() instead of asteroids
 }
 Game.prototype.moveObjects = function() {
     this.asteroids.forEach(a => a.move());
+    // iterate through and move all() objects instead of asteroids
 }
 Game.prototype.wrap = function(pos) {
     // returns a "wrapped position"
@@ -51,6 +57,7 @@ Game.prototype.checkCollisions = function() {
             }
         }
     }
+    // iterate through allObjects() instead of asteroids
 }
 
 Game.prototype.step = function() {
@@ -59,8 +66,18 @@ Game.prototype.step = function() {
 }
 
 Game.prototype.remove = function(asteroid) {
+    // rewrite to remove any kind of object
     let index = this.asteroids.indexOf(asteroid);
     this.asteroids.splice(index, 1);
+}
+
+Game.prototype.allObjects = function() {
+    // return an array of asteroids + the ship
+    // rewrite to include bullets
+}
+
+Game.prototype.isOutOfBounds = function(pos) {
+    // returns true if position is off screen
 }
 
 module.exports = Game;

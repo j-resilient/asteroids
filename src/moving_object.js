@@ -29,6 +29,7 @@ MovingObject.prototype.move = function() {
     this.pos = this.game.wrap(this.pos);
     this.pos[0] += this.vel[0];
     this.pos[1] += this.vel[1];
+    // check if object is out of bounds and wrap if wrappable || remove
 }
 
 MovingObject.prototype.isCollidedWith = function (otherObject) {
@@ -40,6 +41,7 @@ MovingObject.prototype.isCollidedWith = function (otherObject) {
 }
 
 MovingObject.prototype.collideWith = function(otherObject) {
+    // empty this method
     // call Game#remove on this and otherObject
     this.game.remove(otherObject);
     this.game.remove(this);

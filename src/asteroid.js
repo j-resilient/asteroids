@@ -12,5 +12,11 @@ function Asteroid(pos, currentGame) {
     });
 }
 
+// overwrite MovingObject's method
+Asteroid.prototype.collideWith(otherObject) {
+    // if otherObject is ship, call ship.relocate()
+    // else delete both asteroids?? I think??
+}
+
 Util.inherits(Asteroid, MovingObject);
 module.exports = Asteroid;

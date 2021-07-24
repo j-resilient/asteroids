@@ -5,10 +5,16 @@ function GameView(ctx) {
     this.ctx = ctx;
 }
 GameView.prototype.start = function() {
+    // call bindKeyHandlers()
     setInterval(() => {
         this.game.step();
         this.game.draw(this.ctx);
     }, 20);
+}
+
+GameView.prototype.bindKeyHandlers = function() {
+    // bind keys to Ship.power()
+    // bind key to Ship.fireBullet()
 }
 
 module.exports = GameView;
