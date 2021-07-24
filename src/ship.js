@@ -20,7 +20,8 @@ Ship.prototype.relocate = function() {
 }
 
 Ship.prototype.power = function(impulse) {
-    // add impulse to ship's current velocity
+    this.vel[0] += impulse[0];
+    this.vel[1] += impulse[1];
 }
 
 Ship.prototype.fireBullet = function() {
