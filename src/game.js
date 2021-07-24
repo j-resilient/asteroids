@@ -20,12 +20,10 @@ Game.prototype.randomPosition = function() {
 }
 Game.prototype.draw = function(ctx) {
     ctx.clearRect(0, 0, this.dim_x, this.dim_y);
-    this.asteroids.forEach(a => a.draw(ctx));
-    // iterate through and draw allObjects() instead of asteroids
+    this.allObjects().forEach(a => a.draw(ctx));
 }
 Game.prototype.moveObjects = function() {
-    this.asteroids.forEach(a => a.move());
-    // iterate through and move all() objects instead of asteroids
+    this.allObjects().forEach(a => a.move());
 }
 Game.prototype.wrap = function(pos) {
     // returns a "wrapped position"
@@ -47,12 +45,12 @@ Game.prototype.checkCollisions = function() {
     // enumerate asteroids and check for collisions
     // in the event of a collision, alert "COLLISION"
     // (do not check if an asteroid collides with itself)
-    for (let outer = 0; outer < this.asteroids.length; outer++) {
-        for (let inner = outer + 1; inner < this.asteroids.length; inner++) {
-            if (this.asteroids[outer].isCollidedWith(this.asteroids[inner])) {
+    const objects = this.allObjects();
+    for (let outer = 0; outer < this.objects.length; outer++) {
+        for (let inner = outer + 1; inner < this.objects.length; inner++) {
+            if (this.objects[outer].isCollidedWith(this.objects[inner])) {
                 alert("Collision!");
-                this.asteroids[outer].collideWith(this.asteroids[inner]);
-                this.num_asteroids -= 1;
+                this.objects[outer].collideWith(this.objects[inner]);
                 break;
             }
         }
@@ -72,7 +70,7 @@ Game.prototype.remove = function(asteroid) {
 }
 
 Game.prototype.allObjects = function() {
-    // return an array of asteroids + the ship
+    return this.asteroids.concat(this.ship);
     // rewrite to include bullets
 }
 
