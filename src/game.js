@@ -5,7 +5,7 @@ function Game() {
     this.num_asteroids = 4;
     this.asteroids = [];
     this.addAsteroids();
-    // build a ship with a random position
+    this.ship = new Ship(this, this.randomPosition());
     // create array of bullets
 }
 
