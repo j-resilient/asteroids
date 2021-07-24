@@ -15,8 +15,8 @@ function Ship(currentGame, pos) {
 Util.inherits(Ship, MovingObject);
 
 Ship.prototype.relocate = function() {
-    // reset ship's position to random location
-    // reset ship's velocity to the zero vector
+    this.pos = this.game.randomPosition();
+    this.vel = 0;
 }
 
 Ship.prototype.power = function(impulse) {
