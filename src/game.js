@@ -27,7 +27,6 @@ Game.prototype.moveObjects = function() {
 }
 Game.prototype.wrap = function(pos) {
     // returns a "wrapped position"
-    // if the asteroid goes off the screen, make it reappear on the other side
     if (pos[0] > this.dim_x) {
         pos[0] = 0;
     } else if (pos[0] < 0) {
@@ -42,20 +41,17 @@ Game.prototype.wrap = function(pos) {
     return pos;
 }
 Game.prototype.checkCollisions = function() {
-    // enumerate asteroids and check for collisions
-    // in the event of a collision, alert "COLLISION"
+    // enumerate all objects and check for collisions
     // (do not check if an asteroid collides with itself)
     const objects = this.allObjects();
-    for (let outer = 0; outer < this.objects.length; outer++) {
-        for (let inner = outer + 1; inner < this.objects.length; inner++) {
-            if (this.objects[outer].isCollidedWith(this.objects[inner])) {
-                alert("Collision!");
-                this.objects[outer].collideWith(this.objects[inner]);
+    for (let outer = 0; outer < objects.length; outer++) {
+        for (let inner = outer + 1; inner < objects.length; inner++) {
+            if (objects[outer].isCollidedWith(objects[inner])) {
+                objects[outer].collideWith(objects[inner]);
                 break;
             }
         }
     }
-    // iterate through allObjects() instead of asteroids
 }
 
 Game.prototype.step = function() {
