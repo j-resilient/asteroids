@@ -6,17 +6,18 @@ function Asteroid(pos, currentGame) {
     MovingObject.call(this, { 
         pos: pos, 
         vel: Util.randomVec(2), 
-        radius: 10, 
+        radius: 20, 
         color: "#a9a9a9",
         game: currentGame
     });
 }
+Util.inherits(Asteroid, MovingObject);
 
 // overwrite MovingObject's method
 Asteroid.prototype.collideWith = function(otherObject) {
-    // if otherObject is ship, call ship.relocate()
-    // else delete both asteroids?? I think??
+    if (otherObject instanceof Ship) { 
+        otherObject.relocate(); 
+    }
 }
 
-Util.inherits(Asteroid, MovingObject);
 module.exports = Asteroid;
