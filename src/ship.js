@@ -6,8 +6,8 @@ function Ship(currentGame, pos) {
     MovingObject.call(this, {
         pos: pos,
         vel: 0,
-        radius: 5,
-        color: "#66FF00",
+        radius: 10,
+        color: "#090088",
         game: currentGame
     });
 }
