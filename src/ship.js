@@ -5,7 +5,7 @@ function Ship(currentGame, pos) {
     // define ship color, radius, and vel
     MovingObject.call(this, {
         pos: pos,
-        vel: 0,
+        vel: [0, 0],
         radius: 10,
         color: "#090088",
         game: currentGame
