@@ -13,7 +13,7 @@ function Asteroid(pos, currentGame) {
 }
 
 // overwrite MovingObject's method
-Asteroid.prototype.collideWith(otherObject) {
+Asteroid.prototype.collideWith = function(otherObject) {
     // if otherObject is ship, call ship.relocate()
     // else delete both asteroids?? I think??
 }
