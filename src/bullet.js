@@ -13,4 +13,4 @@ function Bullet(vel, pos, game) {
 
 }
 
-module.export = Bullet;
+module.exports = Bullet;
