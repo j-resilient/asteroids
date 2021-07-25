@@ -10,6 +10,7 @@ function Bullet(dirX, dirY, x, y, game) {
         color: "#66FF00",
         radius: 5
     });
+    this.isWrappable = false;
 }
 Util.inherits(Bullet, MovingObject);
 
