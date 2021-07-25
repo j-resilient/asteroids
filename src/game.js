@@ -6,7 +6,7 @@ function Game() {
     this.asteroids = [];
     this.addAsteroids();
     this.ship = new Ship(this, this.randomPosition());
-    // create array of bullets
+    this.bullets = [];
 }
 
 Game.prototype.add = function(obj) {
@@ -15,9 +15,8 @@ Game.prototype.add = function(obj) {
 }
 
 Game.prototype.addAsteroids = function() {
-    // rewrite to add bullets or asteroids
     for (let i = 0; i < this.num_asteroids; i++) {
-        this.asteroids.push(new Asteroid(this.randomPosition(), this));
+        this.add(new Asteroid(this.randomPosition(), this));
     }
 }
 
