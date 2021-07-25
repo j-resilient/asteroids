@@ -25,8 +25,10 @@ Ship.prototype.power = function(impulse) {
 }
 
 Ship.prototype.fireBullet = function() {
-    let bullet = new Bullet(this.vel, this.pos, this.game);
-    this.game.add(bullet);
+    if (!(this.vel[0] === 0 && this.vel[1] === 0)) {
+        let bullet = new Bullet(this.vel[0], this.vel[1], this.pos[0], this.pos[1], this.game);
+        this.game.add(bullet);
+    } 
 }
 
 module.exports = Ship;
