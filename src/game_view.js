@@ -19,7 +19,7 @@ GameView.prototype.bindKeyHandlers = function() {
     key('w', () => { this.game.ship.power([0, -1]) });
     key('a', () => { this.game.ship.power([1, 0]) });
     key('d', () => { this.game.ship.power([-1, 0]) });
-    // bind key to Ship.fireBullet()
+    key('space', () => { this.game.ship.fireBullet() });
 }
 
 module.exports = GameView;
