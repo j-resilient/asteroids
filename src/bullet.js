@@ -2,7 +2,7 @@ const MovingObject = require("./moving_object");
 
 // Subclass of MovingObject
 function Bullet(vel, pos, game) {
-    MovingObject.call({
+    MovingObject.call(this, {
         vel: vel,
         pos: pos,
         game: game,
