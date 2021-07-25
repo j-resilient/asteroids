@@ -46,14 +46,11 @@ Game.prototype.wrap = function(pos) {
     return pos;
 }
 Game.prototype.checkCollisions = function() {
-    // enumerate all objects and check for collisions
-    // (do not check if an asteroid collides with itself)
-    const objects = this.allObjects();
-    for (let outer = 0; outer < objects.length; outer++) {
-        for (let inner = outer + 1; inner < objects.length; inner++) {
-            if (objects[outer].isCollidedWith(objects[inner])) {
-                objects[outer].collideWith(objects[inner]);
-                break;
+    const otherObjs = [].concat(this.bullets, this.ship);
+    for (let a = 0; a < this.asteroids.length; a++) {
+        for (let o = 0; o < otherObjs.length; o++) {
+            if (this.asteroids[a].isCollidedWith(otherObjs[o])) {
+                this.asteroids[a].collideWith(otherObjs[o]);
             }
         }
     }
@@ -66,10 +63,10 @@ Game.prototype.step = function() {
 
 Game.prototype.remove = function(obj) {
     if (obj instanceof Asteroid) {
-        let index = this.asteroids.indexOf(asteroid);
+        let index = this.asteroids.indexOf(obj);
         this.asteroids.splice(index, 1);
     } else if (obj instanceof Bullet) {
-        let index = this.bullets.indexOf(bullets);
+        let index = this.bullets.indexOf(obj);
         this.bullets.splice(index, 1);
     }
 }
