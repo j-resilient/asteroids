@@ -75,8 +75,7 @@ Game.prototype.remove = function(obj) {
 }
 
 Game.prototype.allObjects = function() {
-    return this.asteroids.concat(this.ship);
-    // rewrite to include bullets
+    return this.asteroids.concat(this.bullets, this.ship);
 }
 
 Game.prototype.isOutOfBounds = function(pos) {
