@@ -76,7 +76,10 @@ Game.prototype.allObjects = function() {
 }
 
 Game.prototype.isOutOfBounds = function(pos) {
-    // returns true if position is off screen
+    if (pos[0] > this.dim_x || pos[1] > this.dim_y || pos.some(p => p < 0)) {
+        return true;
+    }
+    return false;
 }
 
 module.exports = Game;
