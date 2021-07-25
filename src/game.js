@@ -9,12 +9,18 @@ function Game() {
     // create array of bullets
 }
 
+Game.prototype.add = function(obj) {
+    if (obj instanceof Asteroid) { this.asteroids.push(obj) }
+    if (obj instanceof Bullet) { this.bullets.push(obj) }
+}
+
 Game.prototype.addAsteroids = function() {
     // rewrite to add bullets or asteroids
     for (let i = 0; i < this.num_asteroids; i++) {
         this.asteroids.push(new Asteroid(this.randomPosition(), this));
     }
 }
+
 Game.prototype.randomPosition = function() {
     return [Math.round(Math.random() * 1000), Math.round(Math.random() * 600)];
 }
