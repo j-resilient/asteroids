@@ -64,10 +64,14 @@ Game.prototype.step = function() {
     this.checkCollisions();
 }
 
-Game.prototype.remove = function(asteroid) {
-    // rewrite to remove any kind of object
-    let index = this.asteroids.indexOf(asteroid);
-    this.asteroids.splice(index, 1);
+Game.prototype.remove = function(obj) {
+    if (obj instanceof Asteroid) {
+        let index = this.asteroids.indexOf(asteroid);
+        this.asteroids.splice(index, 1);
+    } else if (obj instanceof Bullet) {
+        let index = this.bullets.indexOf(bullets);
+        this.bullets.splice(index, 1);
+    }
 }
 
 Game.prototype.allObjects = function() {
