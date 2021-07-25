@@ -16,6 +16,7 @@ function MovingObject(optionsObj) {
     this.radius = optionsObj.radius;
     this.color = optionsObj.color;
     this.game = optionsObj.game;
+    this.isWrappable = true;
 }
 
 MovingObject.prototype.draw = function (ctx) {
@@ -26,10 +27,15 @@ MovingObject.prototype.draw = function (ctx) {
 }
 
 MovingObject.prototype.move = function() {
-    this.pos = this.game.wrap(this.pos);
+    if (this.game.isOutOfBounds(this.pos)) {
+        if (this.isWrappable) { 
+            this.pos = this.game.wrap(this.pos); 
+        } else {
+            this.game.remove(this);
+        }
+    }
     this.pos[0] += this.vel[0];
     this.pos[1] += this.vel[1];
-    // check if object is out of bounds and wrap if wrappable || remove
 }
 
 MovingObject.prototype.isCollidedWith = function (otherObject) {
